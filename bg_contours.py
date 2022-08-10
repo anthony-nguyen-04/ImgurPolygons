@@ -6,13 +6,14 @@ from skimage.io import imread
 from pandas import DataFrame
 from PolygonChecker import checkPolygon
 import random
+import numpy as np
 
 # 0 is CW, 1 is CCW
 initial_orientation = random.randint(0,1)
 
 # Morphological ACWE
-input_file = ".\images\star.png"
-#input_file = "https://i.imgur.com/XyUC9tj.jpg"
+#input_file = ".\images\star.png"
+input_file = "https://i.imgur.com/L7aLoRd.png"
 
 img = imread(input_file)
 
@@ -87,8 +88,13 @@ x2, y2 = ordered_contour_map[int(num_contours / 2)]
 x3, y3 = ordered_contour_map[int(3 * num_contours / 4)]
 
 plt.scatter(x1,y1, c= "#FF0000")
+plt.text(x1,y1, "1")
+
 plt.scatter(x2,y2, c= "#18FF00")
+plt.text(x2,y2, "2")
+
 plt.scatter(x3,y3, c= "#8400FF")
+plt.text(x3,y3, "3")
 
 calc_ori = checkPolygon(ordered_contour_map)
 
